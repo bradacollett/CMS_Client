@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
 
-{% block title %}Clientss{% endblock title %}
+{% block title %}Clients{% endblock title %}
 
 {% block content %}
   {% for client in object_list %}
@@ -24,13 +24,29 @@
         {% for comment in client.comments.all %}
           <p>
             <span class="font-weight-bold">{{ comment.author }} &middot;</span>
-            {{ comment }}
+            {{ comment }} &nbsp <a href="{% url 'comment_edit' comment.pk %}">Edit</a> | <a href="{% url 'comment_delete' comment.pk %}">Delete</a>
           </p>
         {% endfor %}
+      <a href="{% url 'comment_new' %}">Add Comment</a>
+      <br />
+      <hr>
+      {% for computer in client.computers.all %}
+          <p>
+            <span class="font-weight-bold">Equipment &middot;</span>
+            {{ computer.manufacturer }} &middot; {{ computer.type }} &middot; {{ computer }} &middot; Purchased: {{ computer.date_of_purchase }} &middot;
+            Last Serviced: {{ computer.last_serviced }} &nbsp <a href="{% url 'computer_edit' computer.pk %}">Edit</a> | <a href="{% url 'computer_delete' computer.pk %}">Delete</a>
+          </p>
+        {% endfor %}
+        <a href="{% url 'computer_new' %}">Add Equipment</a>
+      <hr>
       </div>
-   <p><a href="{% url 'client_edit' client.pk %}">Edit</a> | <a href="{% url 'client_delete' client.pk %}">Delete</a></p>
+
+
+
+   <p>&nbsp&nbsp&nbsp<a href="{% url 'client_edit' client.pk %}">Edit</a> | <a href="{% url 'client_delete' client.pk %}">Delete</a></p>
 
     </div>
     <br />
   {% endfor %}
 {% endblock content %}
+

@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '@2+j4ib+hakp4&6)bkn%sjilj8y1&kc(m=)#x-i9^mko75(pbe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -113,7 +113,8 @@ TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
-USE_L10N = True
+# changed to false to enable specific format, below.
+USE_L10N = False
 
 USE_TZ = True
 
@@ -128,3 +129,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
+# Sets date format
+DATE_INPUT_FORMATS = ['%m-%d-%Y']
+
+SECURE_SSL_REDIRECT = False

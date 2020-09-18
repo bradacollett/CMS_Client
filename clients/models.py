@@ -43,4 +43,28 @@ class Comment(models.Model):
         return self.comment
 
     def get_absolute_url(self):
-        return reverse('Client_list')
+        return reverse('client_list')
+
+# Extra credit attempt, adding computer info to clients.
+
+
+class Computer(models.Model):
+    client = models.ForeignKey(
+        Client,
+        on_delete=models.CASCADE,
+        related_name='computers',
+    )
+    type = models.CharField(max_length=50, default=' ')
+    manufacturer = models.CharField(max_length=50, default=' ')
+    model = models.CharField(max_length=50, default=' ')
+    date_of_purchase = models.DateField()
+    last_serviced = models.DateField()
+    author = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+    )
+    def __str__(self):
+        return self.model
+
+    def get_absolute_url(self):
+        return reverse('client_list')
