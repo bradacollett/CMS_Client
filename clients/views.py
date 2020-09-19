@@ -38,7 +38,7 @@ class ClientCreateView(LoginRequiredMixin, CreateView):
 
 class ComputerUpdateView(LoginRequiredMixin, UpdateView):
     model = Computer
-    fields = ('type', 'manufacturer', 'model', 'date_of_purchase', 'last_serviced')
+    fields = ('client', 'type', 'manufacturer', 'model', 'date_of_purchase', 'last_serviced','author')
     template_name = 'computer_edit.html'
 
 class ComputerDeleteView(LoginRequiredMixin, DeleteView):
