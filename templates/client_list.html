@@ -33,6 +33,7 @@
       <br />
       <hr>
           <u><span class="font-weight-bold">Equipment</span></u>
+      <br>
       {% for computer in client.computers.all %}
           <p>
             {{ computer.manufacturer }} &middot; {{ computer.type }} &middot; {{ computer }} &middot; Purchased: {{ computer.date_of_purchase }} &middot;
