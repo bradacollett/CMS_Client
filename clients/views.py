@@ -36,6 +36,7 @@ class ClientCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+
 class ComputerUpdateView(LoginRequiredMixin, UpdateView):
     model = Computer
     fields = ('client', 'type', 'manufacturer', 'model', 'date_of_purchase', 'last_serviced','author')
@@ -51,6 +52,7 @@ class ComputerCreateView(LoginRequiredMixin, CreateView):
     template_name = 'computer_new.html'
     fields = ('client', 'type', 'manufacturer', 'model', 'date_of_purchase', 'last_serviced','author')
     login_url = 'login'
+
 
 class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
